@@ -5,7 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TestGitHubPages</title>
-    <base href="/" />
+    <base id="dynamic-base" href="/" />
+    <script>
+        (function () {
+            const base = document.getElementById('dynamic-base');
+            const path = window.location.pathname;
+            if (path.endsWith('/')) {
+                base.setAttribute('href', path);
+            } else {
+                base.setAttribute('href', path + '/');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="css/app.css" />
     <!-- If you add any scoped CSS files, uncomment the following to load them
     <link href="TestGitHubPages.styles.css" rel="stylesheet" /> -->
@@ -26,6 +37,7 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-</body>
 
+
+</body>
 </html>
